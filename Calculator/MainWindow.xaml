@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Calculator" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         
+        <Label Grid.Column="0">A</Label>
+        <TextBox Grid.Column="1" Name="first_number" />
+        <Label Grid.Row="1">Operator</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="operation"/>
+        <Label Grid.Row="2">B</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="second_number" />
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Click="OnCalculate" Content="=" IsDefault="True">
+            <Button.ToolTip>
+                <StackPanel>
+                    <Label>Press the button</Label>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Label Grid.Row="4">Wynik</Label>
+        <TextBox Grid.Row="4" Grid.Column="1" IsReadOnly="True" Name="output" />
     </Grid>
 </Window>
